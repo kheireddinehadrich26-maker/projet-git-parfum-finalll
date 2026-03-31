@@ -47,3 +47,34 @@
             <label for="adresse">Adresse *</label>
             <input type="text" id="adresse" name="adresse">
         </fieldset>
+                <fieldset class="bloc-formulaire">
+            <legend>Compte client</legend>
+
+            <label for="pseudo">Nom d'utilisateur *</label>
+            <input type="text" id="pseudo" name="pseudo">
+
+            <label for="motdepasse">Mot de passe *</label>
+            <input type="password" id="motdepasse" name="motdepasse">
+
+            <label for="confirmation">Confirmer mot de passe *</label>
+            <input type="password" id="confirmation" name="confirmation">
+        </fieldset>
+
+        <fieldset class="bloc-formulaire">
+            <legend>Préférences parfum</legend>
+
+            <label for="famille">Famille préférée</label>
+            <select id="famille" name="famille">
+                <option value="">-- Sélectionner --</option>
+                <option value="floral">Floral</option>
+                <option value="oriental">Oriental</option>
+                <option value="boisé">Boisé</option>
+                <option value="fruité">Fruité</option>
+                <option value="frais">Frais / Agrumes</option>
+            </select>
+
+            <p class="texte-mini">Genre :</p>
+            <label><input type="radio" name="genre" value="femme"> Femme</label>
+            <label><input type="radio" name="genre" value="homme"> Homme</label>
+            <label><input type="radio" name="genre" value="mixte"> Mixte</label>
+        </fieldset>
