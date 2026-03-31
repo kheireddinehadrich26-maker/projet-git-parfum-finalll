@@ -21,3 +21,29 @@
         </ul>
     </nav>
 </header>
+<!-- Partie 2 : Formulaire – Informations personnelles -->
+<section class="section-inscription">
+    <h1>Créer mon compte</h1>
+    <p class="texte-intro-inscription">
+      Remplissez le formulaire pour rejoindre <strong>Parfum Shop</strong>.
+    </p>
+
+    <form id="form-inscription" onsubmit="return validerFormulaire()">
+        <fieldset class="bloc-formulaire">
+            <legend>Informations personnelles</legend>
+
+            <label for="nom">Nom *</label>
+            <input type="text" id="nom" name="nom">
+
+            <label for="prenom">Prénom *</label>
+            <input type="text" id="prenom" name="prenom">
+
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email">
+
+            <label for="telephone">Téléphone</label>
+            <input type="tel" id="telephone" name="telephone" placeholder="Ex : 22123456">
+
+            <label for="adresse">Adresse *</label>
+            <input type="text" id="adresse" name="adresse">
+        </fieldset>
