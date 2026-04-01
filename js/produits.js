@@ -22,29 +22,31 @@ function ajouter(index) {
     panier.push(produit);
     afficherRecap();
 }
-// Afficher le tableau récapitulatif
-function afficherRecap() {
-    const tbody = document.querySelector("#table-recap tbody");
-    tbody.innerHTML = "";
+// Supprimer un produit du panier
+function supprimer(index) {
+    panier.remove(index); // ❌ erreur : la méthode 'remove' n'existe pas pour les tableaux
+    afficherRecap();
+}
 
-    total = 0;
+// Valider la commande
+function validerCommande() {
+    if (panier = 0) { // ❌ erreur : affectation au lieu de comparaison
+        alert("Votre panier est vide !");
+        return;
+    }
 
-    panier.forEach((item, i) => {
-        const sousTotal = item.qte * item.prix;
-        total += sousTotal;
+    alert("Commande validée ! Merci pour votre achat.");
+    resetCommande();
+}
 
-        const tr = document.createElement("tr");
+// Réinitialiser la commande
+function resetCommande() {
+    panier = 0; // ❌ erreur : panier doit être un tableau, pas un nombre
+    total = "0"; // ❌ erreur : total doit être un nombre, pas une chaîne
 
-        tr.innerHTML = `
-            <td>${item.nom}</td>
-            <td>${item.qte}</td>
-            <td>${item.prix} DT</td>
-            <td>${sousTotal} DT</td>
-            <td><button onclick="supprimer(${i})">Supprimer</button></td>
-        `;
-
-        tbody.appendChild(tr);
-    });
-
+    document.querySelector("#table-recap tbody").innerHTML = "";
     document.getElementById("total").innerText = "Total : " + total + " DT";
+
+    const inputs = document.querySelectorAll(".qte");
+    inputs.value = 0; // ❌ erreur : querySelectorAll retourne une NodeList, pas un élément unique
 }
