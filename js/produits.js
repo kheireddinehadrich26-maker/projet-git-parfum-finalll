@@ -39,14 +39,31 @@ function validerCommande() {
     resetCommande();
 }
 
+// Supprimer un produit du panier
+function supprimer(index) {
+    panier.splice(index, 1);
+    afficherRecap();
+}
+
+// Valider la commande
+function validerCommande() {
+    if (panier.length === 0) {
+        alert("Votre panier est vide !");
+        return;
+    }
+
+    alert("Commande validée ! Merci pour votre achat.");
+    resetCommande();
+}
+
 // Réinitialiser la commande
 function resetCommande() {
-    panier = 0; // ❌ erreur : panier doit être un tableau, pas un nombre
-    total = "0"; // ❌ erreur : total doit être un nombre, pas une chaîne
+    panier = [];
+    total = 0;
 
     document.querySelector("#table-recap tbody").innerHTML = "";
-    document.getElementById("total").innerText = "Total : " + total + " DT";
+    document.getElementById("total").innerText = "Total : 0 DT";
 
     const inputs = document.querySelectorAll(".qte");
-    inputs.value = 0; // ❌ erreur : querySelectorAll retourne une NodeList, pas un élément unique
+    inputs.forEach(input => input.value = 0);
 }
