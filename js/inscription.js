@@ -28,25 +28,29 @@ function validerFormulaire() {
   var telephone = document.getElementById("telephone");
   var conditions = document.getElementById("conditions");
 
-  if (pseudo.value == "") {
-    alert("pseudo vide");
+  var message = "";
+
+  if (pseudo.value === "") message += "- Pseudo obligatoire.\n";
+
+  if (motdepasse.value.length < 6)
+    message += "- Mot de passe ≥ 6 caractères.\n";
+
+  if (motdepasse.value !== confirmation.value)
+    message += "- Les mots de passe ne correspondent pas.\n";
+
+  if (telephone.value !== "" && telephone.value.length !== 8)
+    message += "- Téléphone invalide.\n";
+
+  if (!conditions.checked)
+    message += "- Accepter les conditions.\n";
+
+  if (message !== "") {
+    alert(message);
+    return false;
   }
 
-  if (motdepasse.value.length < 6) {
-    alert("mot de passe court");
-  }
+  if (!confirm("Confirmer l'inscription ?")) return false;
 
-  if (motdepasse.value != confirmation.value) {
-    alert("mot de passe incorrect");
-  }
-
-  if (telephone.value.length != 8) {
-    alert("telephone faux");
-  }
-
-  if (!conditions.checked) {
-    alert("conditions non accepte");
-  }
-
-  alert("inscription reussie");
+  alert("Inscription réussie !");
+  return true;
 }
