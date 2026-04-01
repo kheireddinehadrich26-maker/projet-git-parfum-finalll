@@ -15,8 +15,9 @@ Gérer les conflits
 👥 Membres du groupe
 
 👩‍💻 Chiraz Belghuith — Leader / organisation / Git / README
-👨‍💻 Aziz — Page Accueil
-Khaireddine — Page Inscription & Produits
+👨‍💻 Aziz — Page inscreption.html
+Khaireddine — Page Inscription.js & produits .html 
+ibtessem jridi -Produits.js
 
 🗂️ Structure du projet
 parfum-elegance/
