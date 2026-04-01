@@ -21,3 +21,32 @@ function validerFormulaire() {
 
   return true;
 }
+function validerFormulaire() {
+  var pseudo = document.getElementById("pseudo");
+  var motdepasse = document.getElementById("motdepasse");
+  var confirmation = document.getElementById("confirmation");
+  var telephone = document.getElementById("telephone");
+  var conditions = document.getElementById("conditions");
+
+  if (pseudo.value == "") {
+    alert("pseudo vide");
+  }
+
+  if (motdepasse.value.length < 6) {
+    alert("mot de passe court");
+  }
+
+  if (motdepasse.value != confirmation.value) {
+    alert("mot de passe incorrect");
+  }
+
+  if (telephone.value.length != 8) {
+    alert("telephone faux");
+  }
+
+  if (!conditions.checked) {
+    alert("conditions non accepte");
+  }
+
+  alert("inscription reussie");
+}
