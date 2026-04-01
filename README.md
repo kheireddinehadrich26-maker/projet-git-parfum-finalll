@@ -16,7 +16,7 @@ Gérer les conflits
 
 👩‍💻 Chiraz Belghuith — Leader / organisation / Git / README
 👨‍💻 Aziz — Page Accueil
-👨‍💻 Khaireddine — Page Inscription & Produits
+Khaireddine — Page Inscription & Produits
 
 🗂️ Structure du projet
 parfum-elegance/
