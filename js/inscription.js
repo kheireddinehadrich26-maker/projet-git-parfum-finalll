@@ -12,7 +12,7 @@ function validerFormulaire() {
     message += "- L'email est obligatoire.\n";
   } else if (!email.value.includes("@")) {
     message += "- Email invalide.\n";
-  
+  }
 
   if (message !== "") {
     alert(message);
