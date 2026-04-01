@@ -108,4 +108,44 @@ Version finale
 
 Ce projet utilise GitHub workflow.
 
+
+Cause du conflit
+
+
+<img width="763" height="177" alt="image" src="https://github.com/user-attachments/assets/fb5b23f9-fe99-4343-a439-43801953337b" />
+
+
+Le conflit est apparu lors de la fusion de deux branches (feature-homepage et style-css) dans la branche principale main.
+
+En effet, les deux branches ont modifié la même ligne du fichier index.html, précisément la balise <h1> :
+
+Dans la branche feature-homepage :
+<h1>Parfum Élite - Boutique</h1>
+Dans la branche style-css :
+<h1>Parfum Élite Officiel</h1>
+
+Git n’a pas pu déterminer automatiquement quelle version conserver, ce qui a provoqué un conflit de fusion (merge conflict).
+
+🛠️ Méthode de résolution utilisée
+
+Pour résoudre le conflit, nous avons utilisé une résolution manuelle en suivant les étapes suivantes :
+
+Identification du conflit dans le fichier index.html, marqué par les indicateurs :
+<<<<<<< HEAD
+=======
+>>>>>>> style-css
+Analyse des deux versions proposées (current change et incoming change).
+Choix de la version finale (ou combinaison des deux).
+Par exemple, nous avons choisi :
+<h1>Parfum Élite - Boutique Officielle</h1>
+Suppression des marqueurs de conflit (<<<<<<<, =======, >>>>>>>).
+Validation des modifications avec les commandes :
+git add .
+git commit -m "Résolution du conflit entre feature-homepage et style-css"
+✅ Résultat
+
+Le conflit a été résolu avec succès, et la branche main contient maintenant une version cohérente du fichier index.html.
+
+
+
 © 2026 Parfum Élégance
