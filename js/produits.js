@@ -22,3 +22,33 @@ function ajouter(index) {
     panier.push(produit);
     afficherRecap();
 }
+// Version incorrecte
+function afficherRecap() {
+    const tbody = document.querySelector("#table-recap tbody");
+    tbody.innerHTML = "";
+
+    // Oublié le mot-clé let ou const => global variable accidentelle
+    total = 0;
+
+    panier.forEach((item, i) => {
+        // Erreur de calcul: on met juste item.prix au lieu de item.qte * item.prix
+        const sousTotal = item.prix;
+
+        const tr = document.createElement("tr");
+
+        // Erreur de syntaxe: oubli du backtick ` ou des ${}
+        tr.innerHTML = '
+            <td>' + item.nom + '</td>
+            <td>' + item.qte + '</td>
+            <td>' + item.prix DT</td>   // DT non mis entre quotes
+            <td>' + sousTotal + '</td>
+            <td><button onclick="supprimer(i)">Supprimer</button></td>
+        ';
+
+        // Erreur: oublie d'ajouter la ligne au tbody
+        // tbody.appendChild(tr); 
+    });
+
+    // Erreur: mauvaise id ou oubli de .innerText
+    document.getElementById("total").text = "Total : " + total + " DT";
+}
