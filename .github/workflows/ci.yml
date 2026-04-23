@@ -18,5 +18,8 @@ jobs:
         run: |
           echo "✅ Validation HTML/CSS OK (test basique pour DS2)"
 
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
       - name: Build Docker image
         run: docker build -t parfum:${{ github.sha }} .
