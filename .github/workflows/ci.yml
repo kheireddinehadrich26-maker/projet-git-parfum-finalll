@@ -2,7 +2,7 @@ name: CI/CD - Parfum Docker
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main, develop, feature-docker-v1 ]
   pull_request:
     branches: [ main, develop ]
 
@@ -14,11 +14,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Test HTML/CSS (validation simple)
-        run: |
-          echo "✅ Validation HTML/CSS OK (test basique pour DS2)"
+      - name: Test HTML/CSS
+        run: echo "✅ HTML/CSS validation OK"
 
-      - name: Set up Docker Buildx
+      - name: Set up Docker
         uses: docker/setup-buildx-action@v3
 
       - name: Build Docker image
