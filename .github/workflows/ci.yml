@@ -1,25 +1,124 @@
-name: CI/CD - Parfum Docker
+name: CI/CD Pipeline - Parfum
 
 on:
   push:
-    branches: [ main, develop ]
+    branches:
+      - main
+      - develop
   pull_request:
-    branches: [ main, develop ]
+    branches:
+      - main
+      - develop
 
 jobs:
-  test-and-build:
+  # ─────────────────────────────────────────
+  # ÉTAPE 1 : TESTS HTML/CSS
+  # ─────────────────────────────────────────
+  test:
+    name: Test HTML/CSS Validation
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Test HTML/CSS (validation simple)
+      - name: Validate project structure
         run: |
-          echo "✅ Validation HTML/CSS OK (test basique pour DS2)"
+          echo "=== Structure du projet ==="
+          ls -la
+          
+          FAILED=0
+
+          # Vérifier les dossiers
+          for folder in html css js parfum; do
+            if [ -d "$folder" ]; then
+              echo "✅ Dossier '$folder' OK"
+            else
+              echo "❌ Dossier '$folder' MANQUANT"
+              FAILED=1
+            fi
+          done
+
+          # Vérifier les fichiers clés
+          for file in Dockerfile nginx.conf; do
+            if [ -f "$file" ]; then
+              echo "✅ '$file' OK"
+            else
+              echo "❌ '$file' MANQUANT"
+              FAILED=1
+            fi
+          done
+
+          # Vérifier qu'il y a des fichiers HTML
+          HTML_COUNT=$(find html/ -name "*.html" 2>/dev/null | wc -l)
+          if [ "$HTML_COUNT" -gt 0 ]; then
+            echo "✅ $HTML_COUNT fichier(s) HTML trouvé(s)"
+          else
+            echo "❌ Aucun fichier HTML dans html/"
+            FAILED=1
+          fi
+
+          # Vérifier qu'il y a des fichiers CSS
+          CSS_COUNT=$(find css/ -name "*.css" 2>/dev/null | wc -l)
+          if [ "$CSS_COUNT" -gt 0 ]; then
+            echo "✅ $CSS_COUNT fichier(s) CSS trouvé(s)"
+          else
+            echo "❌ Aucun fichier CSS dans css/"
+            FAILED=1
+          fi
+
+          exit $FAILED
+
+  # ─────────────────────────────────────────
+  # ÉTAPE 2 : BUILD DOCKER IMAGE
+  # ─────────────────────────────────────────
+  build:
+    name: Build Docker Image
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
       - name: Build Docker image
         run: docker build -t parfum:${{ github.sha }} .
+
+      - name: Save image as artifact
+        run: docker save parfum:${{ github.sha }} | gzip > parfum-image.tar.gz
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: docker-image
+          path: parfum-image.tar.gz
+          retention-days: 1
+
+  # ─────────────────────────────────────────
+  # ÉTAPE 3 (BONUS) : SECURITY SCAN
+  # ─────────────────────────────────────────
+  security-scan:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: docker-image
+
+      - name: Load Docker image
+        run: gunzip -c parfum-image.tar.gz | docker load
+
+      - name: Run Trivy scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: parfum:${{ github.sha }}
+          format: table
+          exit-code: 0
+          severity: CRITICAL,HIGH
+          ignore-unfixed: true
