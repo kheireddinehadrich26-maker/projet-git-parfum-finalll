@@ -1,16 +1,19 @@
-# Image de base légère et rapide (Nginx + Alpine)
 FROM nginx:alpine
 
-# Copie les fichiers HTML (ils sont dans le dossier html/)
-COPY html/ /usr/share/nginx/html/
+# Métadonnées
+LABEL maintainer="ton.email@esprit.tn"
+LABEL version="1.0"
+LABEL description="Boutique Parfum - DS2 Docker"
 
-# Copie les dossiers CSS, JS et images au bon endroit
+# Copie des fichiers du site
+COPY html/ /usr/share/nginx/html/
 COPY css/ /usr/share/nginx/html/css/
 COPY js/ /usr/share/nginx/html/js/
 COPY images/ /usr/share/nginx/html/images/
 
-# Expose le port 80 (port interne de Nginx)
+# Copie de la configuration Nginx personnalisée
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 EXPOSE 80
 
-# Démarrage automatique de Nginx
 CMD ["nginx", "-g", "daemon off;"]
