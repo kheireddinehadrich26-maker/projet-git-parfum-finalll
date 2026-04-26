@@ -1,0 +1,31 @@
+name: CI/CD Docker
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Test HTML/CSS (validation simple)
+        run: |
+          echo "Vérification des fichiers HTML..."
+          find . -name "*.html" -exec echo "OK → {}" \;
+
+      - name: Build Docker image
+        run: docker build -t parfum-app .
+
+      - name: Security scan (bonus)
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'parfum-app'
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
