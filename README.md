@@ -1,5 +1,13 @@
 Description du projet
+# Projet Parfum - DS2 Docker & CI/CD
 
+## Prérequis
+- Docker Desktop (version 20+)
+- Docker Compose
+
+## Lancement du projet
+```bash
+docker compose up -d
 Parfum Élégance est un mini site web développé en HTML, CSS et JavaScript dans le cadre d’un projet collaboratif avec Git et GitHub.
 
 Le site représente une boutique de parfums et contient trois pages principales :
