@@ -27,6 +27,6 @@ jobs:
         with:
           image-ref: 'parfum-app'
           format: 'table'
-          exit-code: '0'           # Non bloquant
+          exit-code: '0'
           ignore-unfixed: true
         continue-on-error: true
