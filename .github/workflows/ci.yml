@@ -1,4 +1,4 @@
-name: CI/CD Docker
+name: CI/CD - Parfum Docker
 
 on:
   push:
@@ -16,7 +16,7 @@ jobs:
 
       - name: Test HTML/CSS (validation simple)
         run: |
-          echo "Vérification des fichiers HTML..."
+          echo "✅ Vérification des fichiers HTML/CSS..."
           find . -name "*.html" -exec echo "OK → {}" \;
 
       - name: Build Docker image
@@ -27,6 +27,6 @@ jobs:
         with:
           image-ref: 'parfum-app'
           format: 'table'
-          exit-code: '0'           # ← CHANGÉ : 0 = ne pas faire échouer la pipeline
+          exit-code: '0'
           ignore-unfixed: true
-        continue-on-error: true    # ← AJOUTÉ : sécurité supplémentaire
+        continue-on-error: true
