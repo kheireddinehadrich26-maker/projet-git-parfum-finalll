@@ -29,5 +29,5 @@ jobs:
           format: 'table'
           exit-code: '0'
           ignore-unfixed: true
-        continue-on-error: true
+        continue-on-error: true 
     
