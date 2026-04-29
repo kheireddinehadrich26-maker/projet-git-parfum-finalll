@@ -17,11 +17,6 @@ jobs:
           echo "✅ Vérification des fichiers HTML/CSS..."
           find . -name "*.html" -exec echo "OK → {}" \;
 
-      # ====================== TEST DE BLOCAGE (POUR LE DS2) ======================
-      - name: Test qui va échouer (démonstration du blocage)
-        run: exit 1
-      # ============================================================================
-
       - name: Build Docker image
         run: docker build -t parfum-app .
 
@@ -32,4 +27,4 @@ jobs:
           format: 'table'
           exit-code: '0'
           ignore-unfixed: true
-        continue-on-error: true
+
