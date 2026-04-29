@@ -1,5 +1,4 @@
 name: CI/CD - Parfum Docker
-
 on:
   push:
     branches: [ main, develop ]
@@ -9,7 +8,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -18,6 +16,11 @@ jobs:
         run: |
           echo "✅ Vérification des fichiers HTML/CSS..."
           find . -name "*.html" -exec echo "OK → {}" \;
+
+      # ====================== TEST DE BLOCAGE (POUR LE DS2) ======================
+      - name: Test qui va échouer (démonstration du blocage)
+        run: exit 1
+      # ============================================================================
 
       - name: Build Docker image
         run: docker build -t parfum-app .
