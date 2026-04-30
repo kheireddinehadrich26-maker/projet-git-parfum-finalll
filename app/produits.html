@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produits - Parfum Élite</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Parfum<span>Élite</span></h1>
+    <nav>
+        <a href="index.html">Accueil</a> | 
+        <a href="inscription.html">Inscription</a> | 
+        <a href="produits.html">Produits</a>
+    </nav>
+</header>
+
+<section class="section-produits">
+    <h1>Nos Produits</h1>
+    
+    <!-- Produit 1 -->
+    <div class="carte-produit" data-id="p1">
+        <h3 class="nom-produit">Parfum Élégance</h3>
+        <span class="prix" data-prix="80">80.000 DT</span>
+        <div class="qte-wrapper">
+            <label>Quantité :</label>
+            <input type="number" class="qte" value="0" min="0" max="99">
+        </div>
+        <button class="btn-ajouter" onclick="ajouterAuPanier(0)">Ajouter</button>
+    </div>
+    
+    <!-- Produit 2 -->
+    <div class="carte-produit" data-id="p2">
+        <h3 class="nom-produit">Parfum Royal</h3>
+        <span class="prix" data-prix="120">120.000 DT</span>
+        <div class="qte-wrapper">
+            <label>Quantité :</label>
+            <input type="number" class="qte" value="0" min="0" max="99">
+        </div>
+        <button class="btn-ajouter" onclick="ajouterAuPanier(1)">Ajouter</button>
+    </div>
+</section>
+
+<section class="recap">
+    <h2>🛒 Votre Panier</h2>
+    
+    <table id="table-recap">
+        <thead>
+            <tr><th>Produit</th><th>Qté</th><th>Prix</th><th>Total</th><th>Action</th></tr>
+        </thead>
+        <tbody id="panier-body">
+            <tr><td colspan="5" style="text-align:center;color:#777">Panier vide</td></tr>
+        </tbody>
+    </table>
+    
+    <div id="total">Total : 0.000 DT</div>
+    
+    <div class="actions-panier">
+        <button class="btn-valider" onclick="validerCommande()">✅ Valider</button>
+        <button class="btn-vider" onclick="viderPanier()">🗑️ Vider</button>
+    </div>
+</section>
+
+<script src="produits.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription - Parfum Élite</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Parfum<span>Élite</span></h1>
+    <nav>
+        <a href="index.html">Accueil</a> | 
+        <a href="inscription.html">Inscription</a> | 
+        <a href="produits.html">Produits</a>
+    </nav>
+</header>
+
+<section class="section-inscription">
+    <h1>Créer mon compte</h1>
+    
+    <!-- Bannière messages -->
+    <div id="banner" class="banner" style="display:none;"></div>
+
+    <form id="form-inscription">
+        
+        <fieldset class="bloc-formulaire">
+            <legend>Informations personnelles</legend>
+            
+            <div class="field">
+                <label for="nom">Nom *</label>
+                <input type="text" id="nom" name="nom">
+                <span id="h-nom" class="hint"></span>
+            </div>
+
+            <div class="field">
+                <label for="prenom">Prénom *</label>
+                <input type="text" id="prenom" name="prenom">
+                <span id="h-prenom" class="hint"></span>
+            </div>
+
+            <div class="field">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email">
+                <span id="h-email" class="hint"></span>
+            </div>
+
+            <div class="field">
+                <label for="telephone">Téléphone</label>
+                <input type="tel" id="telephone" name="telephone" placeholder="8 chiffres">
+                <span id="h-telephone" class="hint"></span>
+            </div>
+
+            <div class="field">
+                <label for="adresse">Adresse *</label>
+                <input type="text" id="adresse" name="adresse">
+                <span id="h-adresse" class="hint"></span>
+            </div>
+        </fieldset>
+
+        <fieldset class="bloc-formulaire">
+            <legend>Compte client</legend>
+            
+            <div class="field">
+                <label for="pseudo">Pseudo *</label>
+                <input type="text" id="pseudo" name="pseudo">
+                <span id="h-pseudo" class="hint"></span>
+            </div>
+
+            <div class="field">
+                <label for="motdepasse">Mot de passe *</label>
+                <input type="password" id="motdepasse" name="motdepasse">
+                <span id="h-motdepasse" class="hint"></span>
+            </div>
+
+            <div class="field">
+                <label for="confirmation">Confirmer *</label>
+                <input type="password" id="confirmation" name="confirmation">
+                <span id="h-confirmation" class="hint"></span>
+            </div>
+        </fieldset>
+
+        <div class="boutons-form">
+            <button type="submit" class="btn-envoyer">S'inscrire</button>
+            <button type="reset" class="btn-reset" onclick="resetForm()">Effacer</button>
+        </div>
+    </form>
+</section>
+
+<script src="inscription.js"></script>
+</body>
+</html>

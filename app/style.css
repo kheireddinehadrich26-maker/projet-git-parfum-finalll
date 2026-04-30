@@ -1,0 +1,29 @@
+/* Hints validation */
+.hint { display:block; font-size:0.85rem; margin-top:4px; min-height:1.2em; }
+.hint.ok { color:#27ae60; font-weight:bold; }
+.hint.err { color:#e74c3c; font-weight:bold; }
+.hint.info { color:#7f8c8d; font-style:italic; }
+
+/* États inputs */
+input.valid { border:2px solid #2ecc71; background:#f0fff4; }
+input.invalid { border:2px solid #e74c3c; background:#fff5f5; animation:shake 0.3s; }
+
+@keyframes shake {
+    0%,100%{transform:translateX(0)} 25%{transform:translateX(-4px)} 75%{transform:translateX(4px)}
+}
+
+/* Bannière */
+.banner { padding:12px 16px; border-radius:8px; margin:15px 0; }
+.banner.error { background:#ffebee; border-left:4px solid #e74c3c; color:#c0392b; }
+.banner.success { background:#e8f5e9; border-left:4px solid #2ecc71; color:#27ae60; }
+
+/* Panier */
+.btn-ajouter { background:#c25280; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer; margin-top:10px; }
+.btn-ajouter:hover { background:#a8426b; }
+.btn-supprimer { background:#e74c3c; color:white; border:none; padding:5px 12px; border-radius:15px; cursor:pointer; }
+.btn-valider { background:#2ecc71; color:white; border:none; padding:12px 30px; border-radius:25px; cursor:pointer; font-weight:bold; }
+.btn-vider { background:#f4d7e9; color:#4a2c3a; border:2px solid #e7b3cc; padding:12px 25px; border-radius:25px; cursor:pointer; }
+
+#table-recap { width:100%; border-collapse:collapse; margin:20px 0; }
+#table-recap th, #table-recap td { border:1px solid #e7b3cc; padding:10px; text-align:center; }
+#total { font-size:1.3rem; font-weight:bold; color:#b10648; text-align:right; margin:15px 0; }
